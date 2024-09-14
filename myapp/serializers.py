@@ -70,7 +70,7 @@ class CreateMyAppSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
     
     def to_representation(self, instance):
-        return MyAppSerializers(instance, context=self.context).data
+        return MyAppSerializer(instance, context=self.context).data
 
 
 class AdminMyAppSerializer(serializers.ModelSerializer):
