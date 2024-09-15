@@ -19,7 +19,8 @@ class MyAppViewSet(ModelViewSet):
     http_method_names = ('get', 'post')
     permission_classes = ()
     queryset = MyModel.objects.all()
-    
+    serializer_class = CreateMyAppSerializer
+
     def list(self, request, *args, **kwargs):
         response_data = []
         objects = self.queryset
@@ -42,11 +43,6 @@ class MyAppViewSet(ModelViewSet):
 
         return Response(serializer.data)
         
-    def get_serializer_class(self):
-        if self.request.method == 'POST':
-            return CreateMyAppSerializer
-        return MyAppSerializer    
-
 
 class UserViewSet(ModelViewSet):
     http_method_names = ('get', 'post')

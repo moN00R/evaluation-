@@ -1,6 +1,7 @@
+from django.contrib.auth.hashers import make_password
+from rest_framework.exceptions import ValidationError
 from rest_framework import serializers
 from myapp.models import MyModel, User
-from django.contrib.auth.hashers import make_password
 
 
 class CreateUserSerializer(serializers.ModelSerializer):
@@ -65,6 +66,9 @@ class CreateMyAppSerializer(serializers.ModelSerializer):
         read_only_fields = ('owner', )
 
     def create(self, validated_data):
+        if not self.context['request'].user.is_authenticated:
+            raise ValueError('user is not authenticated')
+        
         owner = self.context['request'].user
         validated_data['owner'] = owner
         return super().create(validated_data)
