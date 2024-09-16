@@ -15,40 +15,32 @@ from myapp.serializers import (
     )
 
 
-class MyAppViewSet(ModelViewSet):
-    http_method_names = ('get', 'post')
-    permission_classes = ()
-    queryset = MyModel.objects.all()
-    serializer_class = CreateMyAppSerializer
-
-    def list(self, request, *args, **kwargs):
-        response_data = []
-        objects = self.queryset
-        for object in objects:
-            if object.owner == self.request.user:
-                serializer = MyAppSerializer(object)
-            else:
-                serializer = MyAppSmallSerializer(object)
-            
-            response_data.append(serializer.data)
-
-        return Response(response_data)
-
-    def retrieve(self, request, *args, **kwargs):
-        object = self.get_object()
-        if object.owner == self.request.user:
-            serializer = MyAppSerializer(object)
-        else:
-            serializer = MyAppSmallSerializer(object)
-
-        return Response(serializer.data)
-        
-
 class UserViewSet(ModelViewSet):
     http_method_names = ('get', 'post')
     queryset = User.objects.filter(is_active=True)
     serializer_class = CreateUserSerializer
     permission_classes = ()
+
+
+class MyAppObjectsViewSet(ModelViewSet):
+    http_method_names = ('get', 'post')
+    permission_classes = ()
+
+    def get_serializer(self, *args, **kwargs):
+        if self.request.method == 'GET':
+            return MyAppSerializer
+        return CreateMyAppSerializer
+    
+    def get_queryset(self):
+        my_objects = self.request.user
+        return MyModel.objects.filter(owner=my_objects)
+
+
+class MyAppViewSet(ModelViewSet):
+    http_method_names = ('get')
+    queryset = MyModel.objects.all()
+    permission_classes = ()
+    serializer_class = MyAppSmallSerializer
 
 
 class AdminMyAppViewSet(ModelViewSet):
