@@ -19,6 +19,9 @@ class MyModel(AuditModel):
     text = models.TextField()
     integer = models.IntegerField()
     is_active = models.BooleanField(default=True)
+
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
     
     price = PriceField()
     longitude = LongitudeField()
