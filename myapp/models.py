@@ -2,7 +2,7 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from common.audit.models import AuditModel
-from common.fields.price import Price
+from common.fields.price import PriceField
 from common.fields.location import LongitudeField, LatitudeField
 
 
@@ -20,7 +20,7 @@ class MyModel(AuditModel):
     integer = models.IntegerField()
     is_active = models.BooleanField(default=True)
     
-    price = Price()
+    price = PriceField()
     longitude = LongitudeField()
     latitude = LatitudeField() 
 
