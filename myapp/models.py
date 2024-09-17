@@ -24,6 +24,8 @@ class MyModel(AuditModel):
     end_date = models.DateTimeField()
     
     price = PriceField()
+
+    address = models.TextField()
     longitude = LongitudeField()
     latitude = LatitudeField() 
 
