@@ -3,7 +3,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 
 
-class Price(models.DecimalField):
+class PriceField(models.DecimalField):
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         kwargs.setdefault('max_digits', 12)
         kwargs.setdefault('decimal_places', 8)
