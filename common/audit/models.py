@@ -20,7 +20,7 @@ class AuditModel(SafeDeleteModel):
     class Meta:
         abstract = True
 
-    _safedelete_policy = SOFT_DELETE_CASCADE
+    # _safedelete_policy = SOFT_DELETE_CASCADE
 
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     created_at = models.DateTimeField(null=True, blank=True, auto_now_add=True)

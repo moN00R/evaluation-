@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f9ed4017ac95c861db7f4f6d98ddc6cb578f95a84fadd0bb9533c63651e92832"
+            "sha256": "1069754ac3969fe90956561659697593b4c1cf80b5fdfe688c6e53e9cac31010"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -251,6 +251,23 @@
             "markers": "python_version >= '3.10'",
             "version": "==5.1.1"
         },
+        "django-safedelete": {
+            "hashes": [
+                "sha256:ce63f2dd101fec303837ef624592628e022691c3ade2a0893c9fc4c7796e8288",
+                "sha256:f722845088c00398711fad8961f044cf18badfecaf541bcc616102f46339adda"
+            ],
+            "index": "pypi",
+            "version": "==1.4.0"
+        },
+        "django-simple-history": {
+            "hashes": [
+                "sha256:282cb2c4aa63f51547f17da7f2130abaa81ba01694676d19b88d52c94a57a52c",
+                "sha256:ac3b7ca8b0d33f7ea6be8fe7fc98cf43415efa500ff5dfe736fbd1ebc0cf39f9"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==3.7.0"
+        },
         "django-templated-mail": {
             "hashes": [
                 "sha256:8db807effebb42a532622e2d142dfd453dafcd0d7794c4c3332acb90656315f9",
@@ -287,11 +304,11 @@
         },
         "idna": {
             "hashes": [
-                "sha256:050b4e5baadcd44d760cedbd2b8e639f2ff89bbc7a5730fcc662954303377aac",
-                "sha256:d838c2c0ed6fced7693d5e8ab8e734d5f8fda53a039c0164afb0b82e771e3603"
+                "sha256:12f65c9b470abda6dc35cf8e63cc574b1c52b11df2c86030af0ac09b01b13ea9",
+                "sha256:946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3"
             ],
             "markers": "python_version >= '3.6'",
-            "version": "==3.8"
+            "version": "==3.10"
         },
         "oauthlib": {
             "hashes": [
@@ -300,6 +317,14 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==3.2.2"
+        },
+        "packaging": {
+            "hashes": [
+                "sha256:026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002",
+                "sha256:5b8f2217dbdbd2f7f384c41c628544e6d52f2d0f53c6d0c3ea61aa5d1d7ff124"
+            ],
+            "markers": "python_version >= '3.8'",
+            "version": "==24.1"
         },
         "pycparser": {
             "hashes": [

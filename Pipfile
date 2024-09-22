@@ -9,6 +9,8 @@ djangorestframework = "*"
 python-decouple = "*"
 djoser = "*"
 djangorestframework-simplejwt = "*"
+django-safedelete = "*"
+django-simple-history = "*"
 
 [dev-packages]
 

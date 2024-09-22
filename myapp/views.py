@@ -1,7 +1,7 @@
 # from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAdminUser
-from rest_framework.response import Response
+from myapp.filters import MyModelFilter
 from myapp.models import (
     MyModel, 
     User,
@@ -41,12 +41,14 @@ class MyAppViewSet(ModelViewSet):
     queryset = MyModel.objects.all()
     permission_classes = ()
     serializer_class = MyAppSmallSerializer
+    filterset_class = MyModelFilter
 
 
 class AdminMyAppViewSet(ModelViewSet):
     queryset = MyModel.objects.all()
     permission_classes = (IsAdminUser, )
     serializer_class = AdminMyAppSerializer
+    filterset_class = MyModelFilter
 
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
