@@ -1,10 +1,16 @@
+from typing import Collection
 import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from common.audit.models import AuditModel
+from common.singleton_model.models import SingletonModel 
 from common.fields.price import PriceField
 from common.fields.location import LongitudeField, LatitudeField
 
+
+class ConfigurationModel(AuditModel):
+    percentage_tax = models.FloatField()
+    const_tax = models.FloatField()
 
 class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -25,8 +31,8 @@ class MyModel(AuditModel):
     
     price = PriceField()
 
-    address = models.TextField()
-    longitude = LongitudeField()
-    latitude = LatitudeField() 
+    address = models.TextField(blank=True, null=True)
+    longitude = LongitudeField(blank=True, null=True)
+    latitude = LatitudeField(blank=True, null=True) 
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')

@@ -1,7 +1,7 @@
 from django.contrib.auth.hashers import make_password
 from rest_framework.exceptions import ValidationError
 from rest_framework import serializers
-from myapp.models import MyModel, User
+from myapp.models import MyModel, User, ConfigurationModel
 
 
 class CreateUserSerializer(serializers.ModelSerializer):
@@ -32,14 +32,23 @@ class MyAppSerializer(serializers.ModelSerializer):
         model = MyModel
         fields = (
             'id',
+            'title',
             'char',
             'text',
             'integer',
-            'time',
+            'start_date',
+            'end_date',
+            'price',
+            'last_price',
+            'address',
+            'longitude',
+            'latitude',
             'owner'
         )
-
+        
     owner = CreateUserSerializer()
+    last_price = serializers.FloatField()
+
 
 
 class MyAppSmallSerializer(serializers.ModelSerializer):
@@ -47,9 +56,11 @@ class MyAppSmallSerializer(serializers.ModelSerializer):
         model = MyModel
         fields = (
             'id',
-            'owner'
+            'last_price',
+            'owner',
         )
     
+    last_price = serializers.FloatField()
     owner = CreateUserSerializer
 
  
@@ -58,10 +69,17 @@ class CreateMyAppSerializer(serializers.ModelSerializer):
         model = MyModel
         fields = (
             'id',
+            'title',
             'char',
             'text',
             'integer',
-            'owner'
+            'price',
+            'start_date',
+            'end_date',
+            'address',
+            'longitude',
+            'latitude',
+            'owner',
         )
         read_only_fields = ('owner', )
 
@@ -86,7 +104,22 @@ class AdminMyAppSerializer(serializers.ModelSerializer):
             'char',
             'text',
             'integer',
-            'is_active',
-            'owner',
+            'price',
+            'last_price',
+            'start_date',
+            'end_date',
+            'address',
+            'longitude',
+            'latitude',
+            'owner'
         )
 
+
+class TaxSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ConfigurationModel
+        fields = (
+            'id',
+            'percentage_tax',
+            'const_tax',
+        )   
