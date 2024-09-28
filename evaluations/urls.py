@@ -20,6 +20,7 @@ from django.urls import path, include
 
 app_patterns = [
     path('myapp/', include('myapp.urls')),
+    path('nation/', include('nation.urls')),
 ]
 
 urlpatterns = [

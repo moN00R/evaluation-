@@ -7,14 +7,14 @@ from django.db.models.signals import (
     post_delete,
 )
 
-from signals.querysets import (
-    pre_bulk_create,
-    post_bulk_create,
-    pre_bulk_update,
-    post_bulk_update,
-    pre_bulk_delete,
-    post_bulk_delete,
-)
+# from signals.querysets import (
+#     pre_bulk_create,
+#     post_bulk_create,
+#     pre_bulk_update,
+#     post_bulk_update,
+#     pre_bulk_delete,
+#     post_bulk_delete,
+# )
 
 
 class BulkCreateSignalQuerySet(models.QuerySet):

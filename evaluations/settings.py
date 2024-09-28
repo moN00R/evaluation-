@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'myapp',
+    'nation',
 
     'rest_framework',
     'django_filters',
