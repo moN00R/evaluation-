@@ -9,10 +9,10 @@ class CountryModel(AuditModel):
 
 class CityModel(AuditModel):
     name = models.CharField(max_length=20)
-    country = models.ForeignKey(CountryModel, on_delete=models.CASCADE, related_name='countries')
+    country = models.ForeignKey(CountryModel, on_delete=models.CASCADE, related_name='cities')
 
 
 class AreaModel(AuditModel):
     name = models.CharField(max_length=20)
     zip_code = models.IntegerField()
-    city = models.ForeignKey(CityModel, on_delete=models.CASCADE, related_name='cities') 
+    city = models.ForeignKey(CityModel, on_delete=models.CASCADE, related_name='areas') 

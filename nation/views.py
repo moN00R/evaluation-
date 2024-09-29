@@ -21,14 +21,14 @@ from nation.filters import (
 
 
 class AdminCountryViewSet(ModelViewSet):
-    queryset = CountryModel.objects.all()
+    queryset = CountryModel.objects.all().prefetch_related('cities')
     permission_classes = (IsAdminUser, )
     serializer_class = CountrySerializer
     filterset_class = CountryFilter
 
 
 class AdminCityViewSet(ModelViewSet):
-    queryset = CityModel.objects.all()
+    queryset = CityModel.objects.all().prefetch_related('areas')
     permission_classes = (IsAdminUser, )
     filterset_class = CityFilter
     
@@ -53,7 +53,7 @@ class AdminAreaViewSet(ModelViewSet):
     
 class CountryViewSet(ModelViewSet):
     http_method_names = ('get', )
-    queryset = CountryModel.objects.all()
+    queryset = CountryModel.objects.all().prefetch_related('cities')
     permission_classes = (IsAuthenticated, )
     serializer_class = CountrySerializer
     filterset_class = CountryFilter
@@ -61,7 +61,7 @@ class CountryViewSet(ModelViewSet):
 
 class CityViewSet(ModelViewSet):
     http_method_names = ('get', )
-    queryset = CityModel.objects.all()
+    queryset = CityModel.objects.all().prefetch_related('areas')
     permission_classes = (IsAuthenticated, )
     serializer_class = GetCitySerializer
     filterset_class = CityFilter
